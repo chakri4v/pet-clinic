@@ -1,6 +1,6 @@
 pipeline{
     agent any
-            environ
+ 
         stages{
 
             stage('Build'){
