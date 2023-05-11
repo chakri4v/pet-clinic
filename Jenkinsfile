@@ -17,7 +17,7 @@ pipeline{
                     sh "docker ps -a | grep spring-pet | awk '{print \$1}' | xargs docker rm"
                     //sh "image=`docker images | grep spring-pet | awk \'{print $3}\'`"
                     //sh "docker rmi $image"
-                    sh "image_id=$('docker images | grep spring-pet | awk '{print \$3}'')"
+                    sh "image_id=\$('docker images | grep spring-pet | awk '{print \$3}'')"
                     sh "docker rmi \$image_id"
                    // script {
                   //  def image_id = sh (
