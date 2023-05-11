@@ -23,7 +23,7 @@ pipeline{
                         script: 'docker images | grep spring-pet | awk \'{print $3}\'', returnStdout: true
                         ).trim()
                         
-                        sh "docker rmi \$image_id\"                    
+                        sh "docker rmi \$image_id"                    
                     }
 
                 // providing docker credentials
