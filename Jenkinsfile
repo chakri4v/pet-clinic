@@ -18,12 +18,12 @@ pipeline{
                     //sh "image=`docker images | grep spring-pet | awk \'{print $3}\'`"
                     //sh "docker rmi $image"
                    // sh 'docker rmi $(docker images | grep "spring-pet" | awk \'{print \$3}')'
-                    script{
-                    def image = sh (
+                    script {
+                    def image_id = sh (
                         script: 'docker images | grep spring-pet | awk \'{print $3}\'', returnStdout: true
                         ).trim()
                         
-                        sh "docker rmi $image"                    
+                        sh "docker rmi \$image_id\"                    
                     }
 
                 // providing docker credentials
