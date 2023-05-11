@@ -17,14 +17,15 @@ pipeline{
                     sh "docker ps -a | grep spring-pet | awk '{print \$1}' | xargs docker rm"
                     //sh "image=`docker images | grep spring-pet | awk \'{print $3}\'`"
                     //sh "docker rmi $image"
-                   // sh 'docker rmi $(docker images | grep "spring-pet" | awk \'{print \$3}')'
-                    script {
-                    def image_id = sh (
-                        script: 'docker images | grep spring-pet | awk \'{print $3}\'', returnStdout: true
-                        ).trim()
+                    sh "image_id=$('docker images | grep spring-pet | awk \'{print $3}\'')"
+                    sh "docker rmi \$image_id"
+                   // script {
+                  //  def image_id = sh (
+                    //    script: 'docker images | grep spring-pet | awk \'{print $3}\'', returnStdout: true
+                     //   ).trim()
                         
-                        sh "docker rmi \$image_id"                    
-                    }
+                     //   sh "docker rmi \$image_id"                    
+                    //}
 
                 // providing docker credentials
                 
