@@ -33,11 +33,12 @@ pipeline{
 
             stage("Pushing Docker Images To Repo"){
                 steps{ 
+                    script{                       
                     withCredentials([usernamePassword(credentials: 'DockerHub' , usernameVariable: 'USER', passwordVariable: 'PASS')])
                  // sh "echo $PASS | docker login -u $USER --password-stdin"
                     sh "docker login -u $USER -p $PASS"
                     sh "docker push chakri4v/pet-clinic:1.0.0"
-
+                    }
                 }
             }
             stage("Removing Docker Images"){
